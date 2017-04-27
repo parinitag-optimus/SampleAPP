@@ -22,5 +22,10 @@ namespace IPConnectionData.Model
             get;
             set;
         }
+        public int Id
+        {
+            get;set;
+
+        }
     }
 }
