@@ -1,0 +1,21 @@
+﻿<Window x:Class="IPConnectionData.App.View.ConfigurationToolView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IPConnectionData.App.View"
+        mc:Ignorable="d"
+        Title="ConfigurationTool" Height="300" Width="500">
+    <Grid>
+        <GroupBox x:Name="groupBox" Header="ConnectionList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="119" Width="175"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="86" Margin="22,29,0,0" VerticalAlignment="Top" Width="150"/>
+        <GroupBox x:Name="groupBox1" Header="Details" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Height="113" Width="175"/>
+        <GroupBox x:Name="groupBox2" Header="GroupBox" HorizontalAlignment="Left" Margin="251,15,0,0" VerticalAlignment="Top" Height="237" Width="231">
+            <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="191" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
+        </GroupBox>
+        <Button x:Name="button" Content="Add Connection" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="button1" Content=">>" HorizontalAlignment="Left" Margin="200,95,0,0" VerticalAlignment="Top" Width="32" Height="33"/>
+        <Button x:Name="button2y" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="200,133,0,0" VerticalAlignment="Top" Width="32" Height="32"/>
+
+    </Grid>
+</Window>

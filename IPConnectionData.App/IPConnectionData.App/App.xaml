@@ -1,0 +1,11 @@
+﻿<Application x:Class="IPConnectionData.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:IPConnectionData.App"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <local:ViewModelLocator x:Key="mainViewModelLocator"></local:ViewModelLocator>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
