@@ -14,16 +14,29 @@ namespace IPConnectionData.App.Services
     public class DialogueService
     {
         Window addConnectionView = null;
-        public void ShowDetailDialog()
+        Window configureConnectionsView = null;
+        public void ShowAddConnectionViewDialog()
         {
             addConnectionView = new AddConnectionView();
             addConnectionView.ShowDialog();
         }
 
-        public void CloseDetailDialog()
+        public void CloseAddConnectionViewDetailDialog()
         {
             if (addConnectionView != null)
                 addConnectionView.Close();
+        }
+
+        public void ShowconfigureConnectionsViewDialog()
+        {
+            configureConnectionsView = new ConfigureConnectionsView();
+            configureConnectionsView.ShowDialog();
+        }
+
+        public void CloseconfigureConnectionsViewDialog()
+        {
+            if (configureConnectionsView != null)
+                configureConnectionsView.Close();
         }
     }
 }

@@ -43,7 +43,7 @@
     <Compile Include="Alarms.cs" />
     <Compile Include="AlarmsTags.cs" />
     <Compile Include="IPConnections.cs" />
-    <Compile Include="JacquesServices.cs" />
+    <Compile Include="JacquesDevices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

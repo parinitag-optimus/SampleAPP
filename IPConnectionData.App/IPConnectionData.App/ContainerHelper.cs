@@ -1,4 +1,5 @@
 ﻿using IPConnectionData.App.Repositry;
+using IPConnectionData.DAL;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,10 @@ namespace IPConnectionData.App
         static ContainerHelper()
         {
             _container = new UnityContainer();
-            _container.RegisterType<IConnectionsRepository, ConnectionsRepository>(new ContainerControlledLifetimeManager());
+
+            _container.RegisterType(typeof(IAlarmRepository),typeof(AlarmRepository));
+            _container.RegisterType(typeof(IConnectionsRepository), typeof(ConnectionsRepository));
+            _container.RegisterType(typeof(IDataAccess), typeof(DBAccess));
         }
         public static IUnityContainer Container
         {

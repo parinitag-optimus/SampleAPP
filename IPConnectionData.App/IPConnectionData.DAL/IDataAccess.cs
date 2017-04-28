@@ -6,6 +6,9 @@ namespace IPConnectionData.DAL
     public interface IDataAccess
     {
         List<IPConnections> GetAllIPConnections();
-        IPConnections AddConnection();
+        void AddConnection(IPConnections connection);
+        List<Alarms> GetAllAlarms();
+        List<JacquesDevices> GetAllJacquesDevices();
+        void GetAlarmTags();
     }
 }

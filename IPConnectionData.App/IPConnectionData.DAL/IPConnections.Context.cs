@@ -25,6 +25,9 @@ namespace IPConnectionData.DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AlarmsTagsTable> AlarmsTagsTables { get; set; }
         public virtual DbSet<IPConnectionsTable> IPConnectionsTables { get; set; }
+        public virtual DbSet<JacquesTagTable> JacquesTagTables { get; set; }
+        public virtual DbSet<Alarm> Alarms { get; set; }
     }
 }

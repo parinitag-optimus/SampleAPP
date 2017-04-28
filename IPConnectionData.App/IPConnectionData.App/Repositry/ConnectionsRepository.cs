@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using IPConnectionData.Model;
 using IPConnectionData.DAL;
+using System;
 
 namespace IPConnectionData.App.Repositry
 {
@@ -10,13 +11,14 @@ namespace IPConnectionData.App.Repositry
         public ConnectionsRepository(IDataAccess data) 
         {
             _data = data;
-        }
+        }      
+
         /// <summary>
         /// Method for Adding a New Connection
         /// </summary>
-        public void AddConnection()
+        public void AddConnection(IPConnections connection)
         {
-            _data.AddConnection();
+            _data.AddConnection(connection);
         }
         /// <summary>
         /// Method to get All Connections

@@ -12,6 +12,6 @@ namespace IPConnectionData.App.Repositry
         /// </summary>
         /// <returns></returns>
         List<IPConnections> GetAllConnections();
-        void AddConnection();
+        void AddConnection(IPConnections connection);
     }
 }

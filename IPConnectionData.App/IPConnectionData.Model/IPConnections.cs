@@ -11,19 +11,23 @@ namespace IPConnectionData.Model
     /// </summary>
     public class IPConnections
     {
-        public int Id
+        public IPConnections()
         {
-            get;
-            set;
-        }
+            IPAddress = string.Empty;
+            Port = string.Empty;
+            UserName = string.Empty;
+            Password = string.Empty;
+            Version = "6.0.0.24";
+            Status = "Ready";
 
+        }
         public string IPAddress
         {
             get;
             set;
         }
 
-        public int Port
+        public string Port
         {
             get;
             set;

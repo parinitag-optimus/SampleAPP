@@ -3,20 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:IPConnectionData.App.View"        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:IPConnectionData.App.View"      
+        DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=AddConnectionsViewModel}"
         mc:Ignorable="d"
         Title="Add Connection" Height="275.94" Width="500"   >
     <Grid Height="250" Width="500">
         <Label x:Name="label" Content="IP Address" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="92"/>
         <Label x:Name="label1" Content="User Name" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="92"/>
         <Label x:Name="label2" Content="Password" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="92"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="124,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="124,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="124,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
-        <Button x:Name="button" Content="OK" HorizontalAlignment="Left" Margin="124,197,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="textBox" Text="{Binding Path=NewConnection.IPAddress,Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="124,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox1" Text="{Binding Path=NewConnection.UserName,Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="124,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
+        <TextBox x:Name="textBox2"  Text="{Binding Path=NewConnection.Password,Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="124,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
+       
+        <Button x:Name="button" Content="OK" HorizontalAlignment="Left" Margin="124,197,0,0" VerticalAlignment="Top" Width="75">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding SaveConnections}"
+                                           CommandParameter="{Binding NewConnection}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
         <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="309,197,0,0" VerticalAlignment="Top" Width="75"/>
         <Label x:Name="label3" Content="Port" HorizontalAlignment="Left" Margin="276,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.019,0.485"/>
-        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="347,62,0,0" TextWrapping="Wrap" Text="38880" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="347,62,0,0" TextWrapping="Wrap" Text="{Binding Path=NewConnection.Port}" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

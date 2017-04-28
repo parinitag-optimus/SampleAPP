@@ -11,6 +11,11 @@ namespace IPConnectionData.Model
     /// </summary>
     public class Alarms
     {
+        public Alarms()
+        {
+            Alarm = string.Empty;
+            Site = string.Empty;
+        }
         public string Alarm
         {
             get;
@@ -21,11 +26,6 @@ namespace IPConnectionData.Model
         { 
             get;
             set;
-        }
-        public int Id
-        {
-            get;set;
-
         }
     }
 }

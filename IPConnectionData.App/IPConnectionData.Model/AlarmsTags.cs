@@ -11,6 +11,12 @@ namespace IPConnectionData.Model
     /// </summary>
     public class AlarmsTags
     {
+        public AlarmsTags()
+        {
+            AvigilionAlarm = string.Empty;
+            AvigilionSite = string.Empty;
+           
+        }
         public string AvigilionAlarm
         {
             get;

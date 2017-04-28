@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace IPConnectionData.Model
 {
     /// <summary>
-    /// Model for Jacques Services Tag
+    /// Model for Jacques Devices Tag
     /// </summary>
-    public class JacquesServices
+    public class JacquesDevices
     {
         public int TagId
         {

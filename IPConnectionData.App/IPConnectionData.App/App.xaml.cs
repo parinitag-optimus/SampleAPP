@@ -12,12 +12,13 @@ namespace IPConnectionData.App
     /// </summary>
     public partial class App : Application
     {
-       // private IConnectionsRepository _repo;
+      
         List<IPConnections> ipConnectionData;
-        //public App(IConnectionsRepository repo)
-        //{
-        //    _repo = repo;
-        //}
+       /// <summary>
+       /// Method to open the start up window
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         public void Application_Startup(object sender, StartupEventArgs e)
         {
             IConnectionsRepository repo = new ConnectionsRepository(new DBAccess());

@@ -10,8 +10,16 @@
     <Grid Height="500" Width="500">
         <GroupBox x:Name="groupBox" Header="Connections" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Height="164" Width="480">
             <Grid>
-                <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="69" Width="448" RenderTransformOrigin="0.508,0.112"/>
-                <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="273,112,0,0" VerticalAlignment="Top" Command="{Binding AddConnections}" Width="75"/>
+                <ListView Name="IPConnections" HorizontalAlignment="Left" ItemsSource="{Binding Path=Connections}"  Height="69" Margin="10,10,0,0" VerticalAlignment="Top" Width="448">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="150" DisplayMemberBinding="{Binding IPAddress}"  Header="IP"/>
+                            <GridViewColumn Width="150" DisplayMemberBinding="{Binding Version}" Header="Version" />
+                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding Status}" Header="Status" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="273,112,0,0" VerticalAlignment="Top" Command="{Binding AddIPConnections}" Width="75"/>
                 <Button x:Name="button1" Content="Remove" HorizontalAlignment="Left" Margin="383,112,0,0" VerticalAlignment="Top"  IsEnabled="False" Width="75"/>
             </Grid>
         </GroupBox>
