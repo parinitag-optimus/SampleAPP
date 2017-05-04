@@ -15,10 +15,8 @@ namespace IPConnectionData.App.ViewModel
         public IPConnections NewConnection
         {
             get
-            {
-                // if(_newConnection != null)
-                return _newConnection;
-                // return new IPConnections();
+            {                
+                return _newConnection;                
             }
             set
             {
@@ -53,7 +51,10 @@ namespace IPConnectionData.App.ViewModel
         {
             return true;
         }
-
+        /// <summary>
+        /// Method to add a new IPConnection
+        /// </summary>
+        /// <param name="_newConnection"></param>
         private void SaveConnection(object _newConnection)
         {
             _connectionrepo.AddConnection(NewConnection);

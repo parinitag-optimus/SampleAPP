@@ -82,6 +82,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ContainerHelper.cs" />
+    <Compile Include="Converter\MultiBindConverter.cs" />
     <Compile Include="Repositry\AlarmRepository.cs" />
     <Compile Include="Repositry\ConnectionsRepository.cs" />
     <Compile Include="Repositry\IAlarmRepository.cs" />

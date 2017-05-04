@@ -1,14 +1,12 @@
 ﻿using IPConnectionData.App.Repositry;
 using IPConnectionData.DAL;
 using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPConnectionData.App
 {
+    /// <summary>
+    /// Class To Implement Unity (IOC Container)
+    /// </summary>
     public static class ContainerHelper
     {
         private static IUnityContainer _container;

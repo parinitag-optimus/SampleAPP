@@ -17,9 +17,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="AvigilionAlarm" Type="nvarchar" MaxLength="50" />
-          <Property Name="AvigilionSite" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Alarm" Type="nvarchar" MaxLength="50" />
+          <Property Name="AlarmSite" Type="nvarchar" MaxLength="50" />
           <Property Name="JacquesTagId" Type="int" />
         </EntityType>
         <EntityType Name="IPConnectionsTable">
@@ -52,15 +52,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IPConnectionDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AlarmsTagsTable">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="AvigilionAlarm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AvigilionSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="JacquesTagId" Type="Int32" />
-        </EntityType>
         <EntityType Name="IPConnectionsTable">
           <Key>
             <PropertyRef Name="Id" />
@@ -82,10 +73,10 @@
           <Property Name="TagName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="IPConnectionDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AlarmsTagsTables" EntityType="Self.AlarmsTagsTable" />
           <EntitySet Name="IPConnectionsTables" EntityType="Self.IPConnectionsTable" />
           <EntitySet Name="JacquesTagTables" EntityType="Self.JacquesTagTable" />
           <EntitySet Name="Alarms" EntityType="IPConnectionDBModel.Alarm" />
+          <EntitySet Name="AlarmsTagsTables" EntityType="IPConnectionDBModel.AlarmsTagsTable" />
         </EntityContainer>
         <EntityType Name="Alarm">
           <Key>
@@ -95,22 +86,21 @@
           <Property Name="Alarm1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="AlarmsTagsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Alarm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AlarmSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JacquesTagId" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="IPConnectionDBModelStoreContainer" CdmEntityContainer="IPConnectionDBEntities">
-          <EntitySetMapping Name="AlarmsTagsTables">
-            <EntityTypeMapping TypeName="IPConnectionDBModel.AlarmsTagsTable">
-              <MappingFragment StoreEntitySet="AlarmsTagsTable">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AvigilionAlarm" ColumnName="AvigilionAlarm" />
-                <ScalarProperty Name="AvigilionSite" ColumnName="AvigilionSite" />
-                <ScalarProperty Name="JacquesTagId" ColumnName="JacquesTagId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="IPConnectionsTables">
             <EntityTypeMapping TypeName="IPConnectionDBModel.IPConnectionsTable">
               <MappingFragment StoreEntitySet="IPConnectionsTable">
@@ -138,6 +128,16 @@
               <MappingFragment StoreEntitySet="Alarms">
                 <ScalarProperty Name="Site" ColumnName="Site" />
                 <ScalarProperty Name="Alarm1" ColumnName="Alarm" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlarmsTagsTables">
+            <EntityTypeMapping TypeName="IPConnectionDBModel.AlarmsTagsTable">
+              <MappingFragment StoreEntitySet="AlarmsTagsTable">
+                <ScalarProperty Name="JacquesTagId" ColumnName="JacquesTagId" />
+                <ScalarProperty Name="AlarmSite" ColumnName="AlarmSite" />
+                <ScalarProperty Name="Alarm" ColumnName="Alarm" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

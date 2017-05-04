@@ -15,8 +15,8 @@ namespace IPConnectionData.DAL
     public partial class AlarmsTagsTable
     {
         public int Id { get; set; }
-        public string AvigilionAlarm { get; set; }
-        public string AvigilionSite { get; set; }
+        public string Alarm { get; set; }
+        public string AlarmSite { get; set; }
         public Nullable<int> JacquesTagId { get; set; }
     }
 }

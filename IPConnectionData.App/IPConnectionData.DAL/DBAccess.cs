@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IPConnectionData.Model;
-using IPConnectionData.DAL;
 
 namespace IPConnectionData.DAL
 {
     public class DBAccess : IDataAccess
     {
+        /// <summary>
+        /// Method to Add a new Connection to Database
+        /// </summary>
+        /// <param name="connection"></param>
         public void AddConnection(IPConnections connection)
         {
             IPConnectionDBEntities ipConnectionDBEntities = new IPConnectionDBEntities();
@@ -24,9 +25,12 @@ namespace IPConnectionData.DAL
             };
             ipConnectionDBEntities.IPConnectionsTables.Add(newConnection);
             ipConnectionDBEntities.SaveChanges();
-
-
         }
+
+        /// <summary>
+        /// Method to GetAllIPConnection from DB
+        /// </summary>
+        /// <returns></returns>
 
         public List<IPConnections> GetAllIPConnections()
         {
@@ -46,6 +50,10 @@ namespace IPConnectionData.DAL
             return ipConnectionData;
         }    
 
+        /// <summary>
+        /// Method To Get Alarms From DB
+        /// </summary>
+        /// <returns></returns>
         public List<Alarms> GetAllAlarms()
         {
             List<Alarms> alarmsData = new List<Alarms>();
@@ -64,6 +72,10 @@ namespace IPConnectionData.DAL
             return alarmsData;
         }
 
+        /// <summary>
+        /// Method To Get All Jacques Devices
+        /// </summary>
+        /// <returns></returns>
         public List<JacquesDevices> GetAllJacquesDevices()
         {
             List<JacquesDevices> tagdevices = new List<JacquesDevices>();
@@ -82,9 +94,67 @@ namespace IPConnectionData.DAL
             return tagdevices;
         }
 
-        public void GetAlarmTags()
+        /// <summary>
+        /// Method To Add and Display New Alarm Tag
+        /// </summary>
+        /// <param name="alarm"></param>
+        /// <param name="site"></param>
+        /// <param name="TagId"></param>
+        /// <returns></returns>
+
+        public List<AlarmsTags> AddAndGetAlarmTagsList(string alarm,string site,int TagId)
         {
-            throw new NotImplementedException();
+            IPConnectionDBEntities ipConnectionDBEntities = new IPConnectionDBEntities();
+            var newConnection = new AlarmsTagsTable
+            {
+                Alarm=alarm,
+                AlarmSite=site,
+                JacquesTagId=TagId
+            };
+            ipConnectionDBEntities.AlarmsTagsTables.Add(newConnection);
+            ipConnectionDBEntities.SaveChanges();
+            List<AlarmsTags> alarmtagdevices = new List<AlarmsTags>();
+            alarmtagdevices=GetAlarmTagsList();
+            return alarmtagdevices;
+        }
+
+        /// <summary>
+        /// Method To Get All AlarmsTags From DB
+        /// </summary>
+        /// <returns></returns>
+
+        public List<AlarmsTags> GetAlarmTagsList()
+        {
+            List<AlarmsTags> alarmtagdevices = new List<AlarmsTags>();
+            IPConnectionDBEntities ipConnectionDBEntities = new IPConnectionDBEntities();
+            var connectionQuery = (from alarmTags in ipConnectionDBEntities.AlarmsTagsTables
+                                   select alarmTags).ToList();
+            foreach (var devices in connectionQuery)
+            {
+                alarmtagdevices.Add(new AlarmsTags
+                {
+                    AvigilionAlarm = devices.Alarm,
+                    AvigilionSite = devices.AlarmSite,
+                    JacquesTagId = (int)devices.JacquesTagId
+                });
+            }
+            return alarmtagdevices;
+        }
+        /// <summary>
+        /// Method to delete alarm Tags
+        /// </summary>
+        /// <param name="alarmTags"></param>
+        public void DeleteAlarmTags(AlarmsTags alarmTags)
+        {
+            IPConnectionDBEntities ipConnectionDBEntities = new IPConnectionDBEntities();
+            var connectionQuery = (from alarmTagslist in ipConnectionDBEntities.AlarmsTagsTables
+                                   where alarmTagslist.Alarm ==alarmTags.AvigilionAlarm 
+                                   && alarmTagslist.AlarmSite== alarmTags.AvigilionSite
+                                   select alarmTagslist).FirstOrDefault();
+            ipConnectionDBEntities.AlarmsTagsTables.Remove(connectionQuery);
+            ipConnectionDBEntities.SaveChanges();
+
+
         }
     }
 }

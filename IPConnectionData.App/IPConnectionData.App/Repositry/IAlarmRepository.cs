@@ -1,20 +1,22 @@
 ﻿using IPConnectionData.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPConnectionData.App.Repositry
 {
 
     /// <summary>
-    /// Interface for Alarms
+    /// Interface declarations for Alarms
+    /// GetAll Alarms
+    /// GetAllJacquesDevices
+    /// AddAndGetAlarmsTagsList
+    /// GetAlarmsTagsList
     /// </summary>
     interface IAlarmRepository
     {
         List<Alarms> GetAllAlarms();
         List<JacquesDevices> GetAllJacquesDevices();
-        void GetAlarmTags();
+        List<AlarmsTags> AddAndGetAlarmTagsList(string alarm,string site,int tagId);
+        List<AlarmsTags> GetAlarmTagsList();
+        void DeleteAlarmsTags(AlarmsTags SelectedAlarmsTags);
     }
 }

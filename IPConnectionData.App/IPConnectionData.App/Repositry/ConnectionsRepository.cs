@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using IPConnectionData.Model;
 using IPConnectionData.DAL;
-using System;
 
 namespace IPConnectionData.App.Repositry
 {

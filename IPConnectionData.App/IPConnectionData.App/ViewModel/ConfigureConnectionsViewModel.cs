@@ -41,6 +41,11 @@ namespace IPConnectionData.App.ViewModel
             Connections = _connectionsrepo.GetAllConnections();
         }
 
+        /// <summary>
+        /// Method To Show Add Connection Dialogue
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private bool CanAddCommand(object obj)
         {
             return true;

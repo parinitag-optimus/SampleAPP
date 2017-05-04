@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace IPConnectionData.App.Utility
 {
+    /// <summary>
+    /// Class For ICommand Implementation
+    /// </summary>
     public class CustomCommand : ICommand
     {
         private Action<object> execute;

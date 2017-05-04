@@ -10,7 +10,7 @@
     <Grid>
         <GroupBox x:Name="groupBox" Header="ConnectionList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="119" Width="189"/>
 
-        <ListView Name="Alarms" HorizontalAlignment="Left" ItemsSource="{Binding Path=Alarms}" SelectedItem="{Binding SelectedAlarm}"  Height="86" Margin="22,29,0,0" VerticalAlignment="Top" Width="163">
+        <ListView Name="Alarms" HorizontalAlignment="Left" ItemsSource="{Binding Path=Alarms}" SelectedItem="{Binding SelectedAlarm,Mode=TwoWay}"  Height="86" Margin="22,29,0,0" VerticalAlignment="Top" Width="163">
                 <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Alarm}" Width="60" Header="Alarm" />
@@ -21,7 +21,7 @@
 
 
         <GroupBox x:Name="groupBox1" Header="Devices" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Height="113" Width="189">
-            <ListView Name="Devices" HorizontalAlignment="Left" ItemsSource="{Binding Path=Devices}" SelectedItem="{Binding SelectedDevices}"   Height="86" Margin="10,0,0,0" VerticalAlignment="Top" Width="163">
+            <ListView Name="Devices" HorizontalAlignment="Left" ItemsSource="{Binding Path=Devices}" SelectedItem="{Binding SelectedDevices,Mode=TwoWay}"   Height="86" Margin="10,0,0,0" VerticalAlignment="Top" Width="163">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding TagId}" Width="30"  Header="Tag" />
@@ -32,12 +32,28 @@
             </ListView>
         </GroupBox>
 
-        <GroupBox x:Name="groupBox2" Header="GroupBox" HorizontalAlignment="Left" Margin="251,15,0,0" VerticalAlignment="Top" Height="237" Width="231">
-            <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="191" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
+        <GroupBox x:Name="AlarmTags" Header="GroupBox" HorizontalAlignment="Left" Margin="251,15,0,0" VerticalAlignment="Top" Height="237" Width="231">
+            <ListView  Name="AlarmTagsList" HorizontalAlignment="Left" ItemsSource="{Binding Path=AlarmsTags}" SelectedItem="{Binding SelectedAlarmsTags,Mode=TwoWay}" Height="86" Margin="12,10,0,0" VerticalAlignment="Top" Width="200">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding AvigilionAlarm}" Width="60"  Header="Alarm" />
+                        <GridViewColumn DisplayMemberBinding="{Binding AvigilionSite}" Width="60" Header="Site" />
+                        <GridViewColumn DisplayMemberBinding="{Binding JacquesTagId}" Width="75" Header="TagId" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </GroupBox>
         <Button x:Name="button" Content="Add Connection" Command="{Binding AddConnections}" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="button1" Content=">>" HorizontalAlignment="Left" Margin="214,96,0,0" VerticalAlignment="Top" Width="32" Height="33" Command="{Binding GetAlarmTags}"/>
-        <Button x:Name="button2y" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="214,134,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="0.921,0.604"/>
+        <Button x:Name="button1" Content=">>" Command="{Binding AddAndGetAlarmTags}" HorizontalAlignment="Left" Margin="214,96,0,0" VerticalAlignment="Top" Width="32" Height="33" >
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource localMultiBindConverter}">
+                    <Binding  ElementName="Alarms" Path="SelectedItem.Alarm"/>
+                    <Binding  ElementName="Alarms" Path="SelectedItem.Site"/>
+                    <Binding  ElementName="Devices" Path="SelectedItem.TagId"/>
+            </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+        <Button x:Name="button2" Content="&lt;&lt;" Command="{Binding RemoveAlarmTags}"  HorizontalAlignment="Left" Margin="214,134,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="0.921,0.604"/>
 
     </Grid>
 </Window>

@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f9c8ff10cfa245d6a38da4189c0ca297" Name="Diagram1">
-        <EntityTypeShape EntityType="IPConnectionDBModel.AlarmsTagsTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IPConnectionDBModel.IPConnectionsTable" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IPConnectionDBModel.JacquesTagTable" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IPConnectionDBModel.Alarm" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="IPConnectionDBModel.AlarmsTagsTable" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
